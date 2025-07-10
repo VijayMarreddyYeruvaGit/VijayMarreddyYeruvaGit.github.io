@@ -1,0 +1,480 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #181818;
+  color: #fff;
+}
+
+img,
+div,
+section,
+button,
+a {
+  caret-color: transparent;
+  user-select: none;
+  outline: none;
+}
+
+/* ===================== Navbar ===================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #1a1a1a;
+  padding: 15px 0;
+  text-align: center;
+  animation: fadeDown 1s ease forwards;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  gap: 40px;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar ul li:last-child {
+  margin-right: 40px;
+}
+
+.nav-btn {
+  background: #2c2c2c;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.nav-btn:hover {
+  background: #00b5d9;
+  transform: scale(1.05);
+}
+
+/* ===================== Main Section (Home) ===================== */
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  padding: 60px 40px;
+  gap: 40px;
+}
+
+.text-section,
+.image-section {
+  opacity: 0;
+}
+
+.text-section.animate {
+  animation: slideInLeft 1s ease forwards 0.3s;
+}
+
+.image-section.animate {
+  animation: slideInRight 1s ease forwards 0.5s;
+}
+
+.text-section h1 {
+  font-size: 3rem;
+  margin: 10px 0;
+}
+
+.text-section h2 {
+  font-size: 1.8rem;
+  color: #00e0ff;
+}
+
+.text-section p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.fullstack-para {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.dev-quote {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #ddd;
+  margin-top: 40px;
+  line-height: 2;
+}
+
+.image-section img,
+.about-image img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #00e0ff;
+  box-shadow: 0 0 25px #00e0ff;
+  transition: transform 0.4s ease;
+}
+
+.image-section img:hover,
+.about-image img:hover {
+  transform: scale(1.2);
+}
+
+/* ===================== About Section ===================== */
+.about-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  padding: 60px 40px;
+  flex-wrap: wrap;
+}
+
+.about-image {
+  flex-shrink: 0;
+  opacity: 0;
+}
+
+.about-info {
+  max-width: 600px;
+  font-size: 1.2rem;
+  color: #ccc;
+  line-height: 1.8;
+  opacity: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.about-info h2 {
+  color: #00e0ff;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.about-image.animate {
+  animation: slideInLeft 1s ease forwards;
+}
+
+.about-info.animate {
+  animation: slideInRight 1s ease forwards 0.3s;
+}
+
+/* ===================== Skills Section ===================== */
+.skills-section {
+  text-align: center;
+  padding: 30px 20px;
+  animation: fadeDown 1s ease forwards;
+}
+
+.skills-section h2 {
+  font-size: 2.5rem;
+  color: #00e0ff;
+  margin-bottom: 30px;
+}
+
+.skills-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-item img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 5px;
+  background-color: #222;
+  border: 1px solid #00e0ff66;
+  box-shadow: 0 0 5px #00e0ff22;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.skill-item img:hover,
+.skill-item img:active {
+  transform: scale(1.3);
+  box-shadow: 0 0 15px #00e0ff, 0 0 25px #00e0ff88;
+}
+
+.skill-item span {
+  margin-top: 6px;
+  font-size: 0.75rem;
+  color: #ccc;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===================== Animations ===================== */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-100px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===================== Desktop View Tweaks ===================== */
+@media (min-width: 768px) {
+  .main-content {
+    align-items: flex-start;
+  }
+
+  .image-section {
+    margin-top: 140px; /* ~2 lines below text visually */
+  }
+}
+
+/* ===================== Mobile View Fixes ===================== */
+@media (max-width: 767px) {
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
+
+  .text-section,
+  .image-section {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .image-section {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .text-section h1 {
+    font-size: 2rem;
+  }
+
+  .text-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .text-section p,
+  .fullstack-para,
+  .dev-quote {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .dev-quote {
+    margin-top: 20px;
+  }
+}
+
+.resume-section {
+  padding: 60px 40px;
+  color: #eee;
+}
+
+.resume-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #00e0ff;
+  margin-bottom: 20px;
+}
+
+.resume-actions {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.download-btn {
+  background-color: #00b5d9;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.download-btn:hover {
+  background-color: #008bb5;
+  transform: scale(1.05);
+}
+
+.resume-preview {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #2a2a2a;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px #00e0ff55;
+  line-height: 1.6;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resume-preview:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 25px #00e0ff99;
+}
+
+
+.resume-preview h3,
+.resume-preview h4 {
+  color: #00e0ff;
+  margin-bottom: 10px;
+}
+
+.resume-preview p,
+.resume-preview ul {
+  margin-bottom: 10px;
+}
+
+.resume-preview a {
+  color: #00e0ff;
+  text-decoration: underline;
+}
+
+.resume-preview ul {
+  padding-left: 20px;
+}
+
+.projects-section {
+  padding: 60px 40px;
+  text-align: center;
+  animation: fadeDown 1s ease forwards;
+}
+
+.projects-section h2 {
+  font-size: 2.5rem;
+  color: #00e0ff;
+  margin-bottom: 30px;
+}
+
+.project-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.project-card {
+  background-color: #2a2a2a;
+  border: 2px solid #00e0ff55;
+  border-radius: 16px;
+  padding: 25px 20px;
+  width: 280px;
+  box-shadow: 0 0 15px #00e0ff33;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: inline-block;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px #00e0ff88;
+}
+
+.project-card h3 {
+  color: #00e0ff;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+.project-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+.project-card pre {
+  white-space: pre-wrap;   /* Wrap long lines */
+  word-wrap: break-word;   /* Break long words if needed */
+  text-align: justify;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.contact-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.icon-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.icon-link img {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 0 5px #00e0ff88);
+}
+
+.icon-link span {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #ccc;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.icon-link:hover {
+  transform: scale(1.2);
+}
+.contact-section {
+  padding: 60px 40px;
+  text-align: center;
+  animation: fadeDown 1s ease forwards;
+}
+
+.contact-section h2 {
+  font-size: 2.5rem;
+  color: #00e0ff;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+}
+.nav-btn {
+  text-decoration: none; /* Removes underline */
+}
+
+

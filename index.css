@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #141414;
+  color: #00fff7;
+  font-family: 'Orbitron', sans-serif;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+}
+
+.name {
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.welcome {
+  font-size: 2.5rem;
+  margin: 10px 0;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+/* Launch Button Styles */
+.launch-btn {
+  margin-top: 30px;
+  padding: 15px 40px;
+  font-size: 1.8rem;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #00e0ff, #0077ff);
+  border: none;
+  color: #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 0 20px #00e0ff80;
+  opacity: 0;
+  transform: translateY(50px);
+  pointer-events: none;
+}
+
+/* Bouncing Animation */
+@keyframes bounce-up {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  80% {
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Final locked position */
+  }
+}
+
+.launch-btn.show {
+  animation: bounce-up 1s ease forwards;
+  pointer-events: auto;
+}
+/* Slide-up animation */
+@keyframes slide-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100vh);
+  }
+}
+
+.container.slide {
+  animation: slide-up 1s ease forwards;
+}
