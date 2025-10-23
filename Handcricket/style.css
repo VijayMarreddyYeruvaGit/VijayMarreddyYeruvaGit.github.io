@@ -1,0 +1,701 @@
+/* ===================== CSS Reset & Variables ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #2563eb;
+  --primary-dark: #1d4ed8;
+  --secondary-color: #7c3aed;
+  --accent-color: #06b6d4;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-card: #1e293b;
+  --border-color: #334155;
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  --gradient-success: linear-gradient(135deg, var(--success-color), #34d399);
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+/* ===================== Common Section Styles ===================== */
+.start-section,
+.setup-section,
+.game-section,
+.game-over {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 40px;
+  border: 2px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+  max-width: 1200px;
+  width: 100%;
+  animation: fadeInUp 0.8s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.start-section::before,
+.setup-section::before,
+.game-section::before,
+.game-over::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  transition: left 0.6s ease;
+}
+
+.start-section:hover::before,
+.setup-section:hover::before,
+.game-section:hover::before,
+.game-over:hover::before {
+  left: 100%;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================== Typography ===================== */
+h1, h2, h3 {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+h3 {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: var(--accent-color);
+  -webkit-text-fill-color: var(--accent-color);
+}
+
+/* ===================== Form Elements ===================== */
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+input[type="text"] {
+  width: 100%;
+  max-width: 400px;
+  padding: 15px 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  transform: translateY(-2px);
+}
+
+input[type="text"]::placeholder {
+  color: var(--text-muted);
+}
+
+/* ===================== Button Styles ===================== */
+button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Primary Button */
+#startBtn,
+#confirmSetupBtn,
+#restartBtn {
+  background: var(--gradient);
+  color: white;
+  box-shadow: var(--shadow);
+  padding: 16px 32px;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+#startBtn:hover,
+#confirmSetupBtn:hover,
+#restartBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Option Buttons */
+#oversOptions button,
+#wicketsOptions button {
+  width: 60px;
+  height: 60px;
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  border: 2px solid var(--border-color);
+  font-weight: 700;
+  margin: 8px;
+  transition: all 0.3s ease;
+}
+
+#oversOptions button:hover,
+#wicketsOptions button:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow);
+}
+
+#oversOptions button.selected,
+#wicketsOptions button.selected {
+  background: var(--gradient);
+  color: white;
+  border-color: transparent;
+  transform: scale(1.1);
+  box-shadow: var(--shadow);
+}
+
+/* Run Buttons */
+.run-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 25px 0;
+  max-width: 300px;
+}
+
+.runBtn {
+  width: 80px;
+  height: 80px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.runBtn:hover {
+  background: var(--gradient);
+  color: white;
+  transform: translateY(-5px) scale(1.1);
+  border-color: transparent;
+  box-shadow: var(--shadow);
+}
+
+.runBtn:nth-child(1) { animation-delay: 0.1s; }
+.runBtn:nth-child(2) { animation-delay: 0.2s; }
+.runBtn:nth-child(3) { animation-delay: 0.3s; }
+.runBtn:nth-child(4) { animation-delay: 0.4s; }
+.runBtn:nth-child(5) { animation-delay: 0.5s; }
+.runBtn:nth-child(6) { animation-delay: 0.6s; }
+
+/* Defend Button */
+#defendBtn {
+  background: var(--gradient-success);
+  color: white;
+  box-shadow: var(--shadow);
+  margin-top: 20px;
+  padding: 15px 25px;
+}
+
+#defendBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ===================== Layout Components ===================== */
+/* Options Container */
+.options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin: 30px 0;
+}
+
+.options > div {
+  background: var(--bg-primary);
+  padding: 25px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+}
+
+/* Game Section Layout */
+.game-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* Panels */
+.left-panel,
+.middle-panel,
+.right-panel {
+  background: var(--bg-primary);
+  padding: 25px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.left-panel:hover,
+.middle-panel:hover,
+.right-panel:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow);
+}
+
+.middle-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+/* ===================== Content Styles ===================== */
+/* Player Display */
+#playerDisplay {
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+/* Ball Result */
+#ballResult {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 20px 0;
+  padding: 15px 25px;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  border-left: 4px solid var(--accent-color);
+  animation: pop 0.5s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Innings Info */
+#inningsInfo {
+  font-size: 1.2rem;
+  color: var(--success-color);
+  font-weight: 600;
+  margin: 15px 0;
+  text-align: center;
+}
+
+/* Batsmen Info & Over Scores */
+#batsmenInfo,
+#overScores {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+#batsmenInfo div,
+#overScores div {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+#batsmenInfo div:hover,
+#overScores div:hover {
+  background: var(--bg-secondary);
+  padding-left: 10px;
+  border-radius: 8px;
+}
+
+#batsmenInfo div:last-child,
+#overScores div:last-child {
+  border-bottom: none;
+}
+
+/* Right Panel Scroll */
+.right-panel {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.right-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.right-panel::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 3px;
+}
+
+.right-panel::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+
+.right-panel::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Final Score */
+#finalScore {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin: 25px 0;
+  padding: 20px;
+  background: var(--gradient);
+  border-radius: 12px;
+  font-weight: 700;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* ===================== Responsive Design ===================== */
+@media (max-width: 1024px) {
+  .game-section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .options {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+    align-items: flex-start;
+  }
+  
+  .start-section,
+  .setup-section,
+  .game-section,
+  .game-over {
+    padding: 25px 20px;
+    margin: 10px 0;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .options {
+    gap: 20px;
+  }
+  
+  .options > div {
+    padding: 20px;
+  }
+  
+  #oversOptions button,
+  #wicketsOptions button {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    font-size: 0.9rem;
+  }
+  
+  .run-buttons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 250px;
+  }
+  
+  .runBtn {
+    width: 70px;
+    height: 70px;
+    font-size: 1.3rem;
+  }
+  
+  .left-panel,
+  .middle-panel,
+  .right-panel {
+    padding: 20px;
+    min-height: auto;
+  }
+  
+  .middle-panel {
+    min-height: 350px;
+  }
+  
+  button {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+  
+  #startBtn,
+  #confirmSetupBtn,
+  #restartBtn {
+    padding: 14px 28px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  
+  .start-section,
+  .setup-section,
+  .game-section,
+  .game-over {
+    padding: 20px 15px;
+    border-radius: 16px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.3rem;
+  }
+  
+  h3 {
+    font-size: 1.1rem;
+  }
+  
+  input[type="text"] {
+    padding: 12px 16px;
+    font-size: 1rem;
+  }
+  
+  .options > div {
+    padding: 15px;
+  }
+  
+  #oversOptions button,
+  #wicketsOptions button {
+    width: 45px;
+    height: 45px;
+    font-size: 0.8rem;
+  }
+  
+  .run-buttons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 200px;
+  }
+  
+  .runBtn {
+    width: 60px;
+    height: 60px;
+    font-size: 1.2rem;
+  }
+  
+  .left-panel,
+  .middle-panel,
+  .right-panel {
+    padding: 15px;
+  }
+  
+  #ballResult {
+    font-size: 1.1rem;
+    padding: 12px 20px;
+  }
+  
+  #inningsInfo {
+    font-size: 1.1rem;
+  }
+  
+  #batsmenInfo,
+  #overScores {
+    font-size: 1rem;
+  }
+  
+  #finalScore {
+    font-size: 1.3rem;
+    padding: 15px;
+  }
+}
+
+/* ===================== Animation Classes ===================== */
+.fade-in {
+  animation: fadeInUp 0.8s ease;
+}
+
+.pop-in {
+  animation: pop 0.5s ease;
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* ===================== Loading States ===================== */
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+button:disabled:hover::before {
+  width: 0;
+  height: 0;
+}
+
+/* ===================== Focus States for Accessibility ===================== */
+button:focus,
+input:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* ===================== High Score Highlight ===================== */
+.high-score {
+  background: var(--gradient-success) !important;
+  color: white !important;
+  font-weight: 700;
+}
+
+/* ===================== Cricket Ball Animation ===================== */
+@keyframes ballBounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-20px) rotate(90deg); }
+  50% { transform: translateY(0) rotate(180deg); }
+  75% { transform: translateY(-10px) rotate(270deg); }
+}
+
+.ball-animation {
+  animation: ballBounce 0.6s ease;
+}
+
+/* ===================== Celebration Animation ===================== */
+@keyframes celebrate {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.1) rotate(5deg); }
+  50% { transform: scale(1.05) rotate(-5deg); }
+  75% { transform: scale(1.1) rotate(5deg); }
+}
+
+.celebrate {
+  animation: celebrate 0.8s ease;
+}
+/* Add these animations to your CSS */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pop {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes celebrate {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.1) rotate(5deg); }
+    50% { transform: scale(1.05) rotate(-5deg); }
+    75% { transform: scale(1.1) rotate(5deg); }
+}
+
+@keyframes ballBounce {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-20px) rotate(90deg); }
+    50% { transform: translateY(0) rotate(180deg); }
+    75% { transform: translateY(-10px) rotate(270deg); }
+}

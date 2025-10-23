@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hand Cricket Game</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Start Section -->
+<div class="start-section" id="startSection">
+  <h1>Welcome to Hand Cricket!</h1>
+  <label for="playerName">Enter your name:</label>
+  <input type="text" id="playerName" placeholder="Your Name">
+  <button id="startBtn">Start Game</button>
+</div>
+
+<!-- Setup Section -->
+<div class="setup-section" id="setupSection" style="display:none;">
+  <h2>Hello, <span id="playerDisplay"></span>! Choose Overs & Wickets</h2>
+  <div class="options">
+    <div>
+      <h3>Select Overs (max 10)</h3>
+      <div id="oversOptions"></div>
+    </div>
+    <div>
+      <h3>Select Wickets (max 10)</h3>
+      <div id="wicketsOptions"></div>
+    </div>
+  </div>
+  <button id="confirmSetupBtn">Confirm</button>
+</div>
+
+<!-- Game Section -->
+<div class="game-section" id="gameSection" style="display:none;">
+  <div class="left-panel">
+    <h2>Batsmen Info</h2>
+    <div id="batsmenInfo"></div>
+  </div>
+
+  <div class="middle-panel">
+    <div class="middle-content">
+      <h2>Choose your run</h2>
+      <div class="run-buttons">
+        <button class="runBtn">1</button>
+        <button class="runBtn">2</button>
+        <button class="runBtn">3</button>
+        <button class="runBtn">4</button>
+        <button class="runBtn">5</button>
+        <button class="runBtn">6</button>
+      </div>
+      <p id="ballResult"></p>
+      <p id="inningsInfo"></p>
+      <button id="defendBtn" style="display:none;">Defend Score</button>
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <h2>Scoreboard</h2>
+    <div id="overScores"></div>
+  </div>
+</div>
+
+<!-- Game Over Section -->
+<div class="game-over" id="gameOverSection" style="display:none;">
+  <h1>Game Over!</h1>
+  <p id="finalScore"></p>
+  <button id="restartBtn">Restart Game</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
