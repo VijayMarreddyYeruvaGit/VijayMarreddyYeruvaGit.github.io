@@ -408,7 +408,7 @@ function endGame(message) {
 // ===================== UI Updates =====================
 function updateGameDisplay() {
     updateBatsmenInfo();
-    updateOverScores();
+   
     updateInningsInfo();
     updateRunButtonsContext();
 }
