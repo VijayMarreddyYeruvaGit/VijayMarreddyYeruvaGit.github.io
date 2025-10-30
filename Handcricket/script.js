@@ -492,7 +492,7 @@ function updateRunButtonsContext() {
         runButtons.forEach(button => {
             const originalText = button.textContent;
             if (!originalText.startsWith('Bowl ')) {
-                button.textContent = `Bowl ${originalText}`;
+                button.textContent = `${originalText}`;
             }
         });
     } else {
